@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kang.kmall.mapper.MsOrderMapper">
+
+<!--    &lt;!&ndash; useGenerateKeys表示将自动生成的值返回到order对象中,指定要接收自动生成值的属性名 &ndash;&gt;-->
+<!--    <insert id="createOrder" parameterType="MsOrder" useGeneratedKeys="true" keyProperty="id">-->
+<!--        insert into kmall.ms_order values (#{id},#{sid},#{name},#{createTime})-->
+<!--    </insert>-->
+</mapper>

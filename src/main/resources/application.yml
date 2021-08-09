@@ -1,0 +1,32 @@
+spring:
+#  thymeleaf:
+#    prefix: classpath:./thymeleaf/
+#    suffix: .html
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/kmall?useSSL=false&characterEncoding=UTF-8
+    username: root
+    password: kangshitao
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  redis:
+    host: 192.168.198.198
+    port: 6379
+    database: 0
+    password: kangshitao
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  # 打印sql语句执行日志
+
+  # 配置枚举类的包
+  # 支持统配符 * 或者 ; 分割
+  typeEnumsPackage: com.kang.kmall.enums
+  # 配置实体类的包路径，这样在mapper中可以直接写类名
+  type-aliases-package: com.kang.kmall.entity
+  #如果在mapper中自定义了SQL语句，则需要指定配置文件的位置
+  mapper-locations: classpath:mapper/*.xml
+  # 配置自增主键的策略,配置为数据库id自增
+  global-config:
+    db-config:
+      id-type: auto

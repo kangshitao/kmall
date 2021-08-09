@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kang.kmall.mapper.ProductMapper">
+
+    <!-- 在数据库层面完成销量和版本号+1的操作，并且确保版本号和查询时的一致
+        在MySQL的可重复读隔离级别下，同一事务多次读取到的数据是一样的，如果其他事务已经修改了版本号，当前事务再次
+        读取时，仍然是原来的版本号，为什么这种情况下，当前事务却因为版本号不同而无法执行更新操作呢？
+        因为可重复读隔离级别是对于select操作来说的，对于update操作，当前事务仍然能够看到其他事务的修改。
+        对于当前事务而言，用select看，看不到版本号被更新了，这满足事务的可重复读。
+        但是，当使用update相关操作时，能看到其他事务的更新。
+         -->
+    <update id="updateSale" parameterType="Product">
+        update kmall.product
+        set sale=sale+1,version=version+1
+        where id=#{id} and version=#{version}
+    </update>
+
+</mapper>
